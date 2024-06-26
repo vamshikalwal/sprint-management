@@ -1,0 +1,49 @@
+ <div   class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h3 style="margin-top: 20px;" class="text-center md-4">Create a New Sprint</h3>
+            <div >
+                <form (ngSubmit)="onSubmit()" [formGroup]="sprintValid" novalidate>
+                    <div class="mb-3" >
+                        <label  for="formGroupExampleInput" class="form-label fw-bold" >Start Date :</label>
+                        <input class="border border-info" type="date" name="startDate" id="startDate" formControlName="startDate" [min]="minDate()"
+                        class ="form-control" [(ngModel)]="addNewSprint.startDate" required>
+                        <div class="text-danger" *ngIf="startDate && startDate.invalid && startDate.touched" 
+                       >Start date is required</div>
+                    </div>
+            
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput"class="form-label fw-bold">End Date :</label>
+                        <input type="date" name="endDate" id="endDate" class ="form-control"  [min]="minDate()"
+                        formControlName="endDate"  [(ngModel)]="addNewSprint.endDate" required>
+                        <div class="text-danger" *ngIf="endDate && endDate.invalid && endDate.touched" 
+                        >End date is required</div>
+            
+                    </div>
+            
+                   
+                    <div class="mb-3">
+                        <label for="formGroupExampleInput" class="form-label fw-bold">Project Code :</label>
+                        <input type="number" min="1" name="projectCode" id="projectCode" 
+                        formControlName="projectCode" class ="form-control"  [(ngModel)]="addNewSprint.projectCode" required>
+                        <div class="text-danger" *ngIf="projectCode && projectCode.invalid && projectCode.touched" 
+                       >Project code is required or Invalid</div>
+            
+                    </div>
+            
+                    <button type="submit" class="btn btn-success" [disabled]="sprintValid.invalid">Submit</button>
+                    <button class="btn btn-dark" style="margin-left: 10px;"  type="reset" (click)="reset()">Add Sprint</button>
+                    <div *ngIf="submitted" class="text-center">
+                        <h4 style="margin-top: 10px;" class="mt-4">Sprint data submitted successfully!</h4>
+                        
+                    </div>
+                </form>
+                <div *ngIf="errorMessage" [hidden]="submitted">
+                    <p style="margin-top: 10px;" class="text-danger fw-bold" >{{errorMessage}}</p>   
+                </div>
+        </div>
+        
+    </div>
+
+
+ </div>

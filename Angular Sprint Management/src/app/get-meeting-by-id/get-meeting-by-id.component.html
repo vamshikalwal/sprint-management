@@ -1,0 +1,66 @@
+
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div [hidden]="submitted"  style="width: 400px;">
+    <form  [formGroup]="getByIdValid" (ngSubmit)="onSubmit()">
+        <div class="mb-3" >
+            <label style="margin-top: 20px;" class="form-label fw-bold" for="meetingId">Enter the Meeting Id :</label>
+            <input class="border border-info" type="number" formControlName="meetingById"
+             min="1" class="form-control" id="meetingId" required [(ngModel)]="meetingsDtoObject.id" name="meetingId">
+            <div class="text-danger"  *ngIf="meetingById && meetingById.invalid && 
+            meetingById.touched" >Meeting id is required or Invalid</div>
+        </div>
+        
+        <button type="submit" class="btn btn-success" [disabled]="getByIdValid.invalid">Search</button>
+    </form>
+</div>
+  
+
+
+<!--  -->
+</div>
+</div>
+
+<div [hidden]="!submitted && !noRecordFound">
+  <div *ngIf="responseData">
+     <table class="table">
+       <thead >
+       <tr>
+         <th scope="col">Id</th>
+         <th scope="col">Meeting Link</th>
+         <th scope="col">Meeting Date</th>
+         <th scope="col">Meeting Time</th>
+         <th scope="col">Meeting Type</th>
+         <th scope="col">Sprint Id</th>
+         <th scope="col">Meeting Password</th>
+         <th scope="col">Created On</th>
+         <th scope="col">Status</th>
+         <th scope="col">Updated On</th>
+         <th scope="col">Meeting Platform Id</th>
+   
+       </tr>
+     </thead>
+       <tbody>
+       <tr>
+         <td>{{ meetingDtoObject1.id}}</td>
+         <td>{{ meetingDtoObject1.meetingLink}}</td>
+         <td>{{ meetingDtoObject1.meetingDate}}</td>
+         <td>{{ meetingDtoObject1.meetingTime}}</td>
+         <td>{{ meetingDtoObject1.meetingType}}</td>
+         <td>{{ meetingDtoObject1.sprintId}}</td>
+         <td>{{ meetingDtoObject1.meetingPassword}}</td>
+         <td>{{ meetingDtoObject1.createdOn}}</td>
+         <td>{{ meetingDtoObject1.status}}</td>
+         <td>{{ meetingDtoObject1.updatedOn}}</td>
+         <td>{{ meetingDtoObject1.meetingPlatformId}}</td>
+   
+       </tr>
+       </tbody>
+     </table>
+  </div>
+  <div *ngIf = "responseError" class="text-center">
+    <h4 style="margin-top: 20px;" class="text-danger ">Meeting id is not found!</h4>
+  </div>
+
+</div>

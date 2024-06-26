@@ -1,0 +1,60 @@
+<div  class="container">
+    <div  class="row justify-content-center">
+        <form [formGroup]="meetingValid" (ngSubmit)="onSubmit()" class="row g-3">
+            <div  class="col-md-6">
+              <label for="inputEmail4" class="form-label fw-bold">Meeting Link</label>
+              <input class="form-control" type="text" name="meetingLink" id="meetingLink"  formControlName="meetingLink"  [(ngModel)]="addNewMeeting.meetingLink" required>
+              <div *ngIf="meetingLink && meetingLink.invalid && meetingLink.touched" style="color: red;">Meeting Link is required</div>
+            </div>
+            <div class="col-md-6">
+              <label for="inputPassword4" class="form-label fw-bold">Meeting Password</label>
+              <input class="form-control" type="text" name="meetingPassword" id="meetingPassword" formControlName="meetingPassword" [(ngModel)]="addNewMeeting.meetingPassword" required>
+              <div *ngIf="meetingPassword && meetingPassword.invalid && meetingPassword.touched" style="color: red;">Meeting Password is required</div>
+            </div>
+            <div class="col-md-6">
+              <label for="inputAddress" class="form-label fw-bold">Meeting Time</label>
+              <input class="form-control" step="1" type="time" name="meetingTime" id="meetingTime" formControlName="meetingTime" [(ngModel)]="addNewMeeting.meetingTime" required>
+            <div *ngIf="meetingTime && meetingTime.invalid && meetingTime.touched" style="color: red;">Meeting Time is required</div>
+            </div>
+            <div class="col-md-4">
+                <label for="inputState" class="form-label fw-bold" >Sprint Id</label>
+              <select  class="form-select" name="sprintId" id="sprintId" formControlName="sprintId" [(ngModel)]="addNewMeeting.sprintId">
+                <option selected>Id | Sprint Name | Start Date | End Date | Project Code</option>
+                <option selected>-----------------------------------------------------------</option>
+                <option  *ngFor="let sprint of getSprints" value={{sprint.sprintId}}>{{sprint.sprintId}} | {{sprint.sprintName}} | {{sprint.startDate}} | {{sprint.endDate}} | {{sprint.projectCode}}</option>
+              </select>
+              <div *ngIf="sprintId && sprintId.invalid && sprintId.touched" style="color: red;">Sprint Id is required</div>
+              </div>
+              <div class="col-md-4" >
+                <label for="inputZip" class="form-label fw-bold">Meeting Platform Id</label>
+                <select  class="form-select" name="meetingPlatformId" id="meetingPlatformId" formControlName="meetingPlatformId" [(ngModel)]="addNewMeeting.meetingPlatformId" required>
+                  <option selected>Choose...</option>
+                  <option  *ngFor="let meeting of getAllMeetingPlatforms" value={{meeting.id}}>{{meeting.id}}, {{meeting.name}}</option>
+                </select>
+                <div *ngIf="meetingPlatformId && meetingPlatformId.invalid && meetingPlatformId.touched" style="color: red;">Meeting Platform Id is required</div>
+              </div>
+            <div class="col-12">
+              <label for="inputAddress2" class="form-label fw-bold" >Meeting Type</label>
+              <div class="radio">
+                <label class="form-check-label"><input class="form-check-input" type="radio" name="meetingType" formControlName="meetingType" value="SprintPlanning" [(ngModel)]="addNewMeeting.meetingType" checked>SprintPlanning</label> 
+                <label style="margin-left: 20px;" class="form-check-label" ><input class="form-check-input" type="radio" name="meetingType"  formControlName="meetingType" value="SprintReview" [(ngModel)]="addNewMeeting.meetingType" checked>SprintReview</label>
+                <label style="margin-left: 20px;" class="form-check-label"><input class="form-check-input" type="radio" name="meetingType" formControlName="meetingType" value="SprintRetrospective" [(ngModel)]="addNewMeeting.meetingType" checked>SprintRetrospective</label>
+                <label style="margin-left: 20px;" class="form-check-label"><input class="form-check-input" type="radio" name="meetingType" formControlName="meetingType" value="DailyScrum" [(ngModel)]="addNewMeeting.meetingType" checked>DailyScrum</label>
+                <div *ngIf="meetingType && meetingType.invalid && meetingType.touched" style="color: red;">Meeting Type is required</div>
+            </div>
+            </div>            
+            
+            <div class="col-12">
+              <button type="submit" class="btn btn-success" [disabled]="meetingValid.invalid" >Submit</button>
+              <button class="btn btn-dark" style="margin-left: 10px;"  type="reset" (click)="reset()">Add Meeting</button>
+            </div>
+            <div *ngIf="submitted">
+              <h4 style="margin-top: 20px;">Meeting data submitted successfully!</h4>
+            </div>
+          </form>
+    </div>
+
+</div>
+
+
+

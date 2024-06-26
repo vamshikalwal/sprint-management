@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#" >Sprint Management</a>
+    
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a [hidden]="!autheticateUsersService.isUserLoggedIn()" class="nav-link active" routerLink="AddNewSprint" routerLinkActive="active">Add Sprint</a>
+          <a [hidden]="!autheticateUsersService.isUserLoggedIn()" class="nav-link active" routerLink="AddNewMeeting" routerLinkActive="active">Schedule Meeting</a>
+          <a [hidden]="!autheticateUsersService.isUserLoggedIn()" class="nav-link active" routerLink="GetAllMeetingPlatforms" routerLinkActive="active">Retrive Meeting Platforms</a>
+          <a [hidden]="!autheticateUsersService.isUserLoggedIn()" class="nav-link active" routerLink="GetAllSprints" routerLinkActive="active">Retrive Sprints</a>
+          <a [hidden]="!autheticateUsersService.isUserLoggedIn()" class="nav-link active" routerLink="GetMeetingById/{id}" routerLinkActive="active">Retrive Meeting By Id</a>
+          <a [hidden]="!autheticateUsersService.isUserLoggedIn()" class="nav-link active" routerLink="{id}/RescheduelMeeting" routerLinkActive="active">Reschedule Meeting</a>
+
+        
+        </div>
+      </div>
+      <div>
+        <ul class = "navbar-nav">
+          <li class = "navbar-item">
+            <a [hidden]="!autheticateUsersService.isUserLoggedIn()" class="nav-link active " (click)="logout()" routerLink="logout" routerLinkActive="active">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

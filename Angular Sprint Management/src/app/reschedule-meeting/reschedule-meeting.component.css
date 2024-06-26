@@ -1,0 +1,49 @@
+/* #labeldate{
+    margin-top: 10px;
+    margin-right: 190px;
+}
+
+.content{
+    margin-top: 20px;
+    margin-left: 450px;
+}
+
+input{
+    width: 400px;
+
+}
+
+.errorClass{
+    width: 50%;
+}
+
+h4{
+    font-family: arial,sans-serif;
+    font-weight: bold;
+    color: #333;
+  
+    margin-top: auto;
+    margin-bottom: 20px;
+}
+ */
+
+ input{
+    width: 400px;
+    
+
+}
+
+#form{
+    margin-top: 20px;
+    margin-left: 450px;
+}
+
+#middle{
+    margin-left: 450px;
+
+}
+
+.updateSuccessful{
+    margin-top: 20px;
+    margin-left: 450px;
+}

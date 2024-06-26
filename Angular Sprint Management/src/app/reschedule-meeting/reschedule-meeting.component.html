@@ -1,0 +1,102 @@
+<div class="content">
+    <div class="row justify-content-center">
+        <div>
+            <div>
+                <section [hidden]="submitted">
+            <form [formGroup]="updateValid" id="form" (ngSubmit)="onIdSubmit()"  >
+                    <div class="mb-3" >
+                        <label class="form-label fw-bold" for="form-label" for="meetingId">Enter the Meeting Id :</label><br>
+                        <input class="border border-info" class ="form-control" type="number" formControlName="meetingId" min="1" id="meetingId"  required name="meetingId" [(ngModel)]="meetingdto.id" required>
+                        <div class="error" *ngIf="meetingId && meetingId.invalid && meetingId.touched" style="color: red;" >Meeting id is required or Invalid</div>
+        
+                    </div>
+                <div>
+                    <button type="submit" class="btn btn-success" [disabled]="updateValid.invalid">Submit</button>
+                </div>
+        
+            </form>
+        </section>
+        
+        <section >
+           
+        </section>
+        
+        
+        <div *ngIf="NewResponseData">
+        
+
+            <table class="table" id="newTable">
+                <thead >
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Meeting Link</th>
+                  <th scope="col">Meeting Date</th>
+                  <th scope="col">Meeting Time</th>
+                  <th scope="col">Meeting Type</th>
+                  <th scope="col">Sprint Id</th>
+                  <th scope="col">Meeting Password</th>
+                  <th scope="col">Created On</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Updated On</th>
+                  <th scope="col">Meeting Platform Id</th>
+            
+                </tr>
+              </thead>
+                <tbody>
+                <tr>
+                  <td>{{ meetingdto.id}}</td>
+                  <td>{{ meetingdto.meetingLink}}</td>
+                  <td>{{ meetingdto.meetingDate}}</td>
+                  <td>{{ meetingdto.meetingTime}}</td>
+                  <td>{{ meetingdto.meetingType}}</td>
+                  <td>{{ meetingdto.sprintId}}</td>
+                  <td>{{ meetingdto.meetingPassword}}</td>
+                  <td>{{ meetingdto.createdOn}}</td>
+                  <td>{{ meetingdto.status}}</td>
+                  <td>{{ meetingdto.updatedOn}}</td>
+                  <td>{{ meetingdto.meetingPlatformId}}</td>
+            
+                </tr>
+                </tbody>
+              </table>
+        
+
+         <form id="middle" (ngSubmit)="onUpdateFormSubmit()" >
+
+                <div class="mb-3" >
+                    <label class="form-label fw-bold" for="meetingDate">Meeting Date :</label><br>
+                    <input class="border border-info" class ="form-control" [min]="minDate()" type="date" name="meetingDate" id="meetingDate"  [(ngModel)]="meetingdto.meetingDate" >
+                </div>
+
+                    <div class="mb-3" >
+                        <label class="form-label fw-bold" for="meetingTime">Meeting Time :</label><br>
+                        <input class="border border-info" class ="form-control" type="time" name="meetingTime" id="meetingTime"  [(ngModel)]="meetingdto.meetingTime">
+                    </div>
+                  
+                    <div>
+                        <button type="submit" class="btn btn-success">Update</button>
+                    </div>
+                </form>
+               
+        
+            
+       
+                    
+        <div [hidden]="submitted" *ngIf="errorMessage">
+            <p style="margin-top: 10px; margin-left: 400px;" class="text-danger fw-bold" >{{errorMessage}}</p>   
+        </div>
+        
+        
+        </div>
+        
+         <div [hidden]="!update" class="updateSuccessful">
+            <h4 >Meeting data Updated Successfully!</h4>
+        </div>
+        
+        <div class="mb-3" *ngIf = "NewResponseError" [hidden]="update" >
+        <h4 style="margin-left: 500px; margin-top: 20px;" class="text-danger ">Meeting id is not found!</h4>
+        </div>
+            </div>
+        </div>
+    </div>
+</div>
